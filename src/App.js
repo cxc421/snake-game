@@ -1,28 +1,39 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import StartPage from './pages/StartPage';
+import PlayPage from './pages/PlayPage';
+import EndPage from './pages/EndPage';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+const PAGE = {
+  START_PAGE: 'start-page',
+  PLAY_PAGE: 'play-page',
+  END_PAGE: 'end--page'
+};
+
+const App = () => {
+  const [page, setPage] = useState(PAGE.END_PAGE);
+
+  function toPlayPage() {
+    setPage(PAGE.PLAY_PAGE);
   }
-}
+
+  function toEndPage() {
+    setPage(PAGE.END_PAGE);
+  }
+
+  function toStartPage() {
+    setPage(PAGE.START_PAGE);
+  }
+
+  switch (page) {
+    case PAGE.START_PAGE:
+      return <StartPage toNextPage={toPlayPage} />;
+    case PAGE.PLAY_PAGE:
+      return <PlayPage toNextPage={toEndPage} />;
+    case PAGE.END_PAGE:
+      return <EndPage toNextPage={toStartPage} toPrevPage={toPlayPage} />;
+    default:
+      return null;
+  }
+};
 
 export default App;
