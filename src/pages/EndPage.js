@@ -48,7 +48,7 @@ const CheckText = styled.span`
   }
 `;
 
-const EndPage = ({ toNextPage, toPrevPage }) => {
+const EndPage = ({ toNextPage, toPrevPage, best, score }) => {
   const containerStyle = {
     background: 'black',
     color: 'white'
@@ -74,12 +74,12 @@ const EndPage = ({ toNextPage, toPrevPage }) => {
       <CenterRow style={{ marginTop: 40 }}>
         <ScoreArea>
           <span>score</span>
-          <span>20</span>
+          <span>{score}</span>
         </ScoreArea>
         <span style={{ fontSize: 36, margin: '0 38px' }}>/</span>
         <ScoreArea>
           <span>best</span>
-          <span>108</span>
+          <span>{best}</span>
         </ScoreArea>
       </CenterRow>
       <CenterRow>

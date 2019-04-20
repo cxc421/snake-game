@@ -67,7 +67,7 @@ const BestArea = styled.div`
   bottom: 27px;
 `;
 
-const PlayPage = ({ toNextPage }) => {
+const PlayPage = ({ toNextPage, score, setScore, best }) => {
   const containerStyle = {
     background: 'black',
     padding: 80
@@ -81,13 +81,13 @@ const PlayPage = ({ toNextPage }) => {
       <DecorationText4>AAAAKE</DecorationText4>
       <ScoreArea>
         <span>score</span>
-        <span>20</span>
+        <span>{score}</span>
       </ScoreArea>
       <BestArea>
         <span>best</span>
-        <span>108</span>
+        <span>{best}</span>
       </BestArea>
-      <SandBox toNextPage={toNextPage} />
+      <SandBox toNextPage={toNextPage} setScore={setScore} />
     </Container>
   );
 };
